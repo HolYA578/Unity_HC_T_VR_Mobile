@@ -14,12 +14,11 @@ public class ObjectFall : ObjectBase
 
     protected override IEnumerator Action()
     {
-        GetComponent<Collider>().enabled = false;
-
-        yield return new WaitForSeconds(delay);
-
         aud.PlayOneShot(sound, volume);
-
         rig.useGravity = true;                            // 啟用動力
+
+        yield return new WaitForSeconds(delay);           // 延遲
+
+        aud.enabled = false;                              // 喇叭 啟動 = 否     
     }
 }
